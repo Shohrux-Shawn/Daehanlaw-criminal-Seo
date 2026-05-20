@@ -1,0 +1,11 @@
+User-agent: *
+Allow: /
+
+Disallow: /wp-admin/
+Disallow: /wp-content/
+Disallow: /wp-includes/
+Disallow: /index.php
+Disallow: /login
+Disallow: /api/
+
+Sitemap: https://daehanlaw-criminal.com/sitemap.xml

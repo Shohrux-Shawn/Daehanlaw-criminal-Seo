@@ -1,0 +1,67 @@
+import React, { useMemo } from "react";
+import { motion } from "framer-motion";
+import { cn } from "@/lib/utils";
+
+const COLORS = [
+  "rgb(125 211 252)",
+  "rgb(249 168 212)",
+  "rgb(134 239 172)",
+  "rgb(253 224 71)",
+  "rgb(252 165 165)",
+  "rgb(216 180 254)",
+  "rgb(147 197 253)",
+  "rgb(165 180 252)",
+  "rgb(196 181 253)",
+];
+
+const getRandomColor = () => COLORS[Math.floor(Math.random() * COLORS.length)];
+
+export const BoxesCore = ({ className, ...rest }: { className?: string }) => {
+  // 60 cols × 35 rows = 2100 cells — enough to cover full section after skew transform
+  const rows = useMemo(() => Array.from({ length: 60 }), []);
+  const cols = useMemo(() => Array.from({ length: 35 }), []);
+
+  return (
+    <div
+      style={{
+        transform: `translate(-20%,-40%) skewX(-48deg) skewY(14deg) scale(0.675) translateZ(0)`,
+      }}
+      className={cn(
+        "absolute top-0 left-0 w-[200%] h-[200%] flex z-0",
+        className,
+      )}
+      {...rest}
+    >
+      {rows.map((_, i) => (
+        <motion.div
+          key={`row${i}`}
+          className="w-16 h-8 border-l border-slate-700 relative"
+        >
+          {cols.map((_, j) => (
+            <motion.div
+              whileHover={{ backgroundColor: getRandomColor(), transition: { duration: 0 } }}
+              animate={{ transition: { duration: 2 } }}
+              key={`col${j}`}
+              className="w-16 h-8 border-r border-t border-slate-700 relative"
+            >
+              {j % 2 === 0 && i % 2 === 0 ? (
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  strokeWidth="1.5"
+                  stroke="currentColor"
+                  className="absolute h-6 w-10 -top-[14px] -left-[22px] text-slate-700 stroke-[1px] pointer-events-none"
+                >
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M12 6v12m6-6H6" />
+                </svg>
+              ) : null}
+            </motion.div>
+          ))}
+        </motion.div>
+      ))}
+    </div>
+  );
+};
+
+export const Boxes = React.memo(BoxesCore);

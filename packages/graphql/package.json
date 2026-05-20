@@ -1,0 +1,14 @@
+{
+  "name": "@daehanlaw/graphql",
+  "version": "0.1.0",
+  "private": true,
+  "main": "./index.ts",
+  "types": "./index.ts",
+  "dependencies": {
+    "@apollo/client": "^3.13.8",
+    "graphql": "^16.9.0"
+  },
+  "peerDependencies": {
+    "react": "^18.2.0"
+  }
+}

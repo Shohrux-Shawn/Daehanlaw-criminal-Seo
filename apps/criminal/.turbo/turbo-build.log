@@ -1,0 +1,58 @@
+yarn run v1.22.22
+$ next build
+  ▲ Next.js 14.2.0
+
+   Linting and checking validity of types ...
+   Creating an optimized production build ...
+ ✓ Compiled successfully
+   Collecting page data ...
+   Generating static pages (0/21) ...
+   Generating static pages (5/21) 
+   Generating static pages (10/21) 
+   Generating static pages (15/21) 
+ ✓ Generating static pages (21/21)
+   Finalizing page optimization ...
+   Collecting build traces ...
+
+Route (pages)                                    Size     First Load JS
+┌ ● / (ISR: 60 Seconds) (532 ms)                 11.7 kB         212 kB
+├   /_app                                        0 B             142 kB
+├ ○ /404                                         180 B           142 kB
+├ ● /about (ISR: 1800 Seconds) (407 ms)          6.87 kB         207 kB
+├ ○ /about/advantages                            4.62 kB         163 kB
+├ ○ /about/location                              3.37 kB         162 kB
+├ ○ /admin/articles                              7.17 kB         152 kB
+├ ○ /admin/login                                 3.73 kB         145 kB
+├ ƒ /api/chat                                    0 B             142 kB
+├ ● /articles (ISR: 60 Seconds)                  1.32 kB         160 kB
+├ ● /articles/[id]                               2.89 kB         161 kB
+├ ● /attorneys (ISR: 900 Seconds)                1.54 kB         160 kB
+├ ● /calculation (ISR: 3600 Seconds)             6.08 kB         164 kB
+├ ● /cases (ISR: 60 Seconds) (406 ms)            1.54 kB         160 kB
+├ ● /cases/[id]                                  2.79 kB         161 kB
+├ ● /cases/analysis (ISR: 60 Seconds) (415 ms)   1.39 kB         160 kB
+├ ● /cases/insights (ISR: 60 Seconds) (405 ms)   1.37 kB         160 kB
+├ ● /cases/knowledge (ISR: 60 Seconds) (404 ms)  1.37 kB         160 kB
+├ ● /cases/reviews (ISR: 60 Seconds) (414 ms)    1.36 kB         160 kB
+├ ○ /contact                                     1.36 kB         160 kB
+├ ○ /login                                       3.23 kB         161 kB
+├ ● /practice/all (ISR: 3600 Seconds)            4.92 kB         163 kB
+├ ƒ /practice/criminal                           2.13 kB         160 kB
+├ ○ /search                                      4.87 kB         166 kB
+├ ƒ /sitemap.xml                                 250 B           142 kB
+└ ● /solatium (ISR: 3600 Seconds)                5.1 kB          163 kB
++ First Load JS shared by all                    154 kB
+  ├ chunks/framework-d805e4be61624b3f.js         45.2 kB
+  ├ chunks/main-c6c3ef767ac15ae7.js              36.8 kB
+  ├ chunks/pages/_app-117370e957c31230.js        58 kB
+  ├ css/a6eb158a51b1f7d3.css                     12 kB
+  └ other shared chunks (total)                  1.69 kB
+
+ƒ Middleware                                     27 kB
+
+○  (Static)   prerendered as static content
+●  (SSG)      prerendered as static HTML (uses getStaticProps)
+   (ISR)      incremental static regeneration (uses revalidate in getStaticProps)
+ƒ  (Dynamic)  server-rendered on demand
+
+Done in 14.36s.
