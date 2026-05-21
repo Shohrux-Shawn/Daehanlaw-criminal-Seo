@@ -104,19 +104,19 @@ const SECTIONS: Section[] = [
 ];
 
 function itemHref(SITE_CONFIG: any, slug: string, item: string): string {
-  if (slug === 'divorce') return `/practice/divorce`;
+  if (slug === 'criminal') return `/practice/criminal`;
   return mainSiteLink(SITE_CONFIG, `/practice/${slug}/${encodeURIComponent(item)}`);
 }
 
 function cardHref(config: any, slug: string): string {
-  if (slug === 'divorce') return '/practice/divorce';
+  if (slug === 'criminal') return '/practice/criminal';
   return mainSiteLink(config, `/practice/${slug}`);
 }
 
 function GroupCard({ card, config }: { card: Card; config: typeof SITE_CONFIG }) {
   const [openSet, setOpenSet] = useState<Set<string>>(new Set());
   const totalItems = card.subgroups.reduce((n, sg) => n + sg.items.length, 0);
-  const isInternal = card.slug === 'divorce';
+  const isInternal = card.slug === 'criminal';
   const href = cardHref(config, card.slug);
 
   function toggle(label: string) {
@@ -172,7 +172,7 @@ function GroupCard({ card, config }: { card: Card; config: typeof SITE_CONFIG })
                 <div className="flex flex-col divide-y divide-gray-100 bg-slate-50">
                   {sg.items.map(item => {
                     const iHref = itemHref(config, card.slug, item);
-                    const iInternal = card.slug === 'divorce';
+                    const iInternal = card.slug === 'criminal';
                     return (
                       <a
                         key={item}
@@ -227,7 +227,7 @@ export default function PracticeAllPage() {
               type="text"
               value={search}
               onChange={e => setSearch(e.target.value)}
-              placeholder="분야 또는 세부 항목 검색 (예: 사기, 이혼, 위자료)"
+              placeholder="분야 또는 세부 항목 검색 (예: 사기, 폭행, 마약)"
               className="flex-1 px-4 py-3.5 text-[13.5px] text-gray-800 outline-none placeholder:text-gray-300 bg-transparent tracking-[-0.25px]"
             />
             {search && (

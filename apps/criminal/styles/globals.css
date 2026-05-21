@@ -24,6 +24,10 @@
     --ring: 222 45% 45%;
     --popover: 0 0% 100%;
     --popover-foreground: 222 55% 11%;
+    --card: 0 0% 100%;
+    --card-foreground: 222 55% 11%;
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
     --radius: 0.5rem;
   }
 

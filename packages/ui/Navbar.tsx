@@ -79,12 +79,10 @@ export function Navbar({ config }: NavbarProps) {
       ],
     },
     {
-      label: '업무분야', href: '/practice/divorce',
+      label: '업무분야', href: '/practice/criminal',
       children: [
-        { label: `${area} 그룹 업무`, href: '/practice/divorce' },
+        { label: `${area} 그룹 업무`, href: '/practice/criminal' },
         { label: '전체',              href: '/practice/all' },
-        { label: '양육비계산기',      href: '/calculation' },
-        { label: '위자료계산기',      href: '/practice/solatium' },
       ],
     },
     {

@@ -14,7 +14,7 @@ export const SITE_CONFIG: SiteConfig = {
   propertyType:    'CRIMINAL',
   brandColor:     '#1a1a2f',
   heroImage:      '',
-  heroHeadline:   '형사 사건,\n15년 경력 형사전문변호사와 함께하세요',
-  heroSubheadline: '구속·기소부터 항소·상고까지 — 의뢰인의 자유와 권리를 끝까지 지켜드리는 법무법인 대한중앙 형사 전문변호사 팀이 함께합니다.',
+  heroHeadline:   '당신의 편에서,\n가장 든든한 형사 조력자',
+  heroSubheadline: '불안한 형사 절차 속에서도 차분한 설명과 실질적 대응으로 끝까지 함께합니다.',
   phoneNumber:    '1533-7377',
 };

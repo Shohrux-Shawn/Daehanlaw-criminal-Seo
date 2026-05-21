@@ -5,19 +5,21 @@ import { SeoHead } from '@daehanlaw/ui';
 import { SITE_CONFIG } from '@/site.config';
 import { useInView } from '@/lib/hooks/useInView';
 import PageHero from '@/components/ui/PageHero';
+import { Card, CardContent } from '@/components/ui/card';
+import { Separator } from '@/components/ui/separator';
 
 /* ── Data ─────────────────────────────────────────────────────────────────── */
 
 const STRENGTHS = [
   {
     title: '인적역량',
-    subtitle: '부동산·형사·가사 전 분야를 아우르는 검증된 전문 변호사팀',
+    subtitle: '형사·민사·행정 전 분야를 아우르는 검증된 전문 변호사팀',
     items: [
-      '이혼 전문 변호사 15+',
+      '형사 전문 변호사 15+',
       '사건별 1~15인 TF 조력',
-      '부동산·형사·가사 통합 대응',
+      '형사·민사·행정 통합 대응',
       '특별수행본부·송무관리본부 운영',
-      '월간 가사사건 수임 200+',
+      '월간 형사사건 수임 200+',
     ],
     note: '* 법무법인 대한중앙 형사전문센터 기준',
     src: '/group/KakaoTalk_20260324_165601027_01.jpg',
@@ -36,9 +38,9 @@ const STRENGTHS = [
   },
   {
     title: '고객 중심 운영',
-    subtitle: '재산분할·친권 등 의뢰인의 모든 정보를 내 것처럼 철저히 파악',
+    subtitle: '수사·재판 단계별로 의뢰인의 상황을 내 것처럼 철저히 파악',
     items: [
-      '재산분할·위자료·친권 전문 대응',
+      '수사·재판·항소심 단계별 전문 대응',
       '의뢰인 정보 완벽 보호',
       '365일 24시간 상담 접수',
       '이중 보증제(성무품질·회원 보증)',
@@ -51,10 +53,10 @@ const STRENGTHS = [
     subtitle: '언론과 방송이 검증한 대한중앙의 전문성과 신뢰',
     items: [
       '주요 방송·언론 출연 검증',
-      '불륜 증거조사·디지털포렌식',
+      '디지털포렌식·증거 분석',
       '신변보호·맞춤형 경호계획',
       '심리상담 & 심리치료 연계',
-      '데이터 기반 사건 분석',
+      '데이터 기반 양형 분석',
     ],
     src: '/group/KakaoTalk_20260324_165601027_20.jpg',
   },
@@ -109,7 +111,7 @@ export default function AdvantagesPage() {
                 <div className="w-10 h-1 bg-gold-400 rounded-full" />
                 <p className="text-base text-gray-700 leading-relaxed" style={{ letterSpacing: '-0.25px' }}>
                   법무법인 대한중앙 형사전문센터는 글로벌 로펌 수준의 선진 시스템을 바탕으로,{' '}
-                  <strong className="font-semibold text-gray-900">누구나 신뢰할 수 있는 이혼 법률 서비스</strong>를 제공합니다.
+                  <strong className="font-semibold text-gray-900">누구나 신뢰할 수 있는 형사 법률 서비스</strong>를 제공합니다.
                 </p>
                 <p className="text-base text-gray-700 leading-relaxed" style={{ letterSpacing: '-0.25px' }}>
                   대한중앙의 핵심은 탄탄한 인적 역량과 안정적인 시스템을 기반으로{' '}
@@ -122,7 +124,7 @@ export default function AdvantagesPage() {
                   <strong className="font-semibold text-gray-900">&apos;원팀(One-Team)&apos;</strong> 시스템으로 움직입니다.
                 </p>
                 <p className="text-base text-gray-700 leading-relaxed" style={{ letterSpacing: '-0.25px' }}>
-                  이혼이라는 중요한 순간, 대한중앙은{' '}
+                  형사 사건이라는 중요한 순간, 대한중앙은{' '}
                   <strong className="font-semibold text-gray-900">고객의 입장에서 끝까지 함께하는 든든한 동행자</strong>가 되겠습니다.
                 </p>
               </div>
@@ -130,7 +132,7 @@ export default function AdvantagesPage() {
               {/* Right: image */}
               <div className="order-1 lg:order-2">
                 <img
-                  src="/divorce.png"
+                  src="/hero.png"
                   alt="대한중앙의 강점"
                   className="w-full h-auto object-cover rounded-xl"
                 />
@@ -159,11 +161,10 @@ export default function AdvantagesPage() {
 
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
               {STRENGTHS.map(s => (
-                <div
+                <Card
                   key={s.title}
-                  className="group flex flex-col bg-white rounded-lg overflow-hidden shadow-sm hover:-translate-y-1 hover:shadow-md transition-all duration-300"
+                  className="group flex flex-col overflow-hidden border-0 hover:-translate-y-1 hover:shadow-md transition-all duration-300"
                 >
-                  {/* Image */}
                   <div className="w-full bg-gray-100">
                     <img
                       src={s.src}
@@ -172,14 +173,13 @@ export default function AdvantagesPage() {
                     />
                   </div>
 
-                  {/* Content */}
-                  <div className="p-5 flex flex-col flex-1">
-                    <h3 className="text-[16px] font-black text-gray-900 mb-1" style={{ letterSpacing: '-0.3px' }}>
+                  <CardContent className="p-5 pt-5 flex flex-col flex-1">
+                    <h3 className="text-[16px] font-black text-gray-900 mb-1 tracking-[-0.3px]">
                       {s.title}
                     </h3>
-                    <p className="text-[12px] text-gray-500 leading-snug mb-4">{s.subtitle}</p>
+                    <p className="text-[12px] text-muted-foreground leading-snug mb-4">{s.subtitle}</p>
 
-                    <div className="w-7 h-px mb-4 bg-gold-400" />
+                    <Separator className="w-7 h-px mb-4 bg-gold-400" />
 
                     <ul className="space-y-2 flex-1 mb-4">
                       {s.items.map(item => (
@@ -193,14 +193,14 @@ export default function AdvantagesPage() {
                       {s.note && <li className="text-[11px] text-gray-400 pt-1 pl-5">{s.note}</li>}
                     </ul>
 
-                    <div className="flex items-center gap-1.5 mt-auto pt-3 border-t border-gray-100">
+                    <div className="flex items-center gap-1.5 mt-auto pt-3 border-t border-border">
                       <span className="text-[12px] font-semibold text-navy-700">자세히 보기</span>
                       <svg className="w-3.5 h-3.5 group-hover:translate-x-0.5 transition-transform duration-200 text-navy-700" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2.5">
                         <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7"/>
                       </svg>
                     </div>
-                  </div>
-                </div>
+                  </CardContent>
+                </Card>
               ))}
             </div>
           </div>
@@ -222,7 +222,7 @@ export default function AdvantagesPage() {
               </p>
               <h3 className="text-[22px] sm:text-[28px] lg:text-[34px] font-black text-white leading-tight" style={{ letterSpacing: '-0.5px' }}>
                 당신을 위한{' '}
-                <span className="text-gold-300">이혼 전문 법률서비스</span>가
+                <span className="text-gold-300">형사 전문 법률서비스</span>가
                 <br className="hidden sm:block" />
                 {' '}준비되어 있습니다
               </h3>

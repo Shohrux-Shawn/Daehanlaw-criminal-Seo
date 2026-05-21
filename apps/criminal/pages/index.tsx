@@ -1,3 +1,4 @@
+import React from 'react';
 import type { GetStaticProps } from 'next';
 import Link from 'next/link';
 import Layout from '@/components/Layout';
@@ -8,7 +9,7 @@ import {
 import { Boxes } from '@/components/ui/background-boxes';
 import { BlogPostCard } from '@/components/ui/card-18';
 import { ImageAutoSlider } from '@/components/ui/image-auto-slider';
-import { HeroCarousel, type HeroSlide } from '@/components/ui/hero-carousel';
+import ConsultHero from '@/components/ui/consult-hero';
 
 function stripHtml(html: string, max = 140): string {
   const plain = html.replace(/<[^>]*>/g, ' ').replace(/\s+/g, ' ').trim();
@@ -21,13 +22,6 @@ function resolveArticleImage(path: string | undefined): string {
   return `https://api.daehanlaw.com/${path}`;
 }
 
-const HERO_SLIDES: HeroSlide[] = [
-  { id: 1, title: '재산분할',   imageUrl: '/hero/pexels-rdne-7841412.jpg' },
-  { id: 2, title: '양육권 분쟁', imageUrl: '/hero/pexels-karola-g-7876207.jpg' },
-  { id: 3, title: '위자료 청구', imageUrl: '/hero/pexels-karola-g-7876148.jpg' },
-  { id: 4, title: '이혼 소송',   imageUrl: '/hero/pexels-pavel-danilyuk-8111815.jpg' },
-  { id: 5, title: '가사 조정',   imageUrl: '/hero/pexels-karola-g-7876148.jpg' },
-];
 
 function resolveAgentImage(path: string | undefined): string {
   if (!path) return '/attorney-placeholder.png';
@@ -60,11 +54,12 @@ const HOME_SCHEMA = {
     addressCountry: 'KR',
   },
   areaServed: 'KR',
-  serviceType: ['이혼소송', '재산분할', '양육권', '위자료'],
+  serviceType: ['형사변호', '구속·체포영장 대응', '수사 단계 변호', '형사 항소·상고'],
   priceRange: '상담 무료',
 };
 
 export default function Home({ cases, articles, agents }: HomeProps) {
+  const [headlineLine1, headlineLine2] = SITE_CONFIG.heroHeadline.split('\n');
   // Split the article list: first 4 → Insights section (featured + 3 grid)
   //                        remaining → Articles section (simple grid)
   const insightSlice = articles.slice(0, 4);
@@ -75,78 +70,21 @@ export default function Home({ cases, articles, agents }: HomeProps) {
       <SeoHead
         config={SITE_CONFIG}
         title={`${SITE_CONFIG.practiceArea} 전문 법무법인`}
-        description={`${SITE_CONFIG.practiceArea} 분야 전문 변호사가 재산분할, 양육권, 위자료 등 모든 이혼·가사 분쟁을 신속하고 정확하게 해결해 드립니다.`}
+        description={`${SITE_CONFIG.practiceArea} 분야 전문 변호사가 구속·체포영장 대응, 수사·재판, 항소·상고까지 모든 형사 사건을 신속하고 정확하게 변호해 드립니다.`}
         schema={HOME_SCHEMA}
       />
 
-      {/* ── Hero with interactive image accordion ── */}
-      <section className="relative overflow-hidden bg-navy-900">
-        {/* Gradient overlay */}
-        <div
-          className="absolute inset-0"
-          style={{
-            background:
-              'linear-gradient(135deg, rgba(13,22,41,0.95) 0%, rgba(13,22,41,0.75) 50%, rgba(13,22,41,0.92) 100%)',
-          }}
-          aria-hidden
-        />
-        {/* Decorative gold glow */}
-        <div
-          className="absolute -right-32 -top-32 w-[500px] h-[500px] rounded-full opacity-[0.06] pointer-events-none"
-          style={{ background: 'radial-gradient(circle, #c9a04c 0%, transparent 70%)' }}
-          aria-hidden
-        />
+      {/* ── Hero ── */}
+      <ConsultHero
+        badgeText="형사전문 변호인의 든든한 동행"
+        headlineLine1={headlineLine1}
+        headlineLine2={headlineLine2}
+        subtitle={SITE_CONFIG.heroSubheadline}
+        primaryCta={{ text: '지금 상담하기', href: '/contact' }}
+        secondaryCta={{ text: '변호사 소개', href: '/attorneys' }}
+        backgroundImageUrl="/back.png"
+      />
 
-        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-20 lg:py-28">
-          <div className="flex flex-col lg:flex-row items-center lg:items-stretch gap-12 lg:gap-12">
-
-            {/* Left — text + CTAs */}
-            <div className="w-full lg:w-[44%] text-center lg:text-left lg:self-center">
-              <div className="inline-flex items-center gap-2 mb-5 px-4 py-2 rounded-full bg-white/8 border border-white/10">
-                <span className="w-2 h-2 rounded-full bg-gold-400 animate-pulse2" />
-                <span className="text-[12px] font-bold text-gold-300 uppercase tracking-[0.15em]">
-                  {SITE_CONFIG.practiceArea} 전문 법무법인
-                </span>
-              </div>
-
-              <h1 className="text-[30px] sm:text-[40px] lg:text-[52px] font-black text-white leading-tight tracking-[-1px] mb-5 animate-fade-in-up">
-                {SITE_CONFIG.heroHeadline.split('\n').map((line, i) => (
-                  <span key={i}>
-                    {i === 0 ? <span className="text-gold-400">{line}</span> : <><br />{line}</>}
-                  </span>
-                ))}
-              </h1>
-
-              <p
-                className="text-[14px] sm:text-[16px] text-white/70 max-w-xl mx-auto lg:mx-0 leading-relaxed mb-8 animate-fade-in-up"
-                style={{ animationDelay: '0.15s' }}
-              >
-                {SITE_CONFIG.heroSubheadline}
-              </p>
-
-              <div
-                className="flex flex-col sm:flex-row gap-3 justify-center lg:justify-start animate-fade-in-up"
-                style={{ animationDelay: '0.25s' }}
-              >
-                <CtaButton href="/contact" variant="primary">상담 신청</CtaButton>
-                <a href={`tel:${SITE_CONFIG.phoneNumber}`} className="btn-outline text-[14px]">
-                  {SITE_CONFIG.phoneNumber} 전화상담
-                </a>
-              </div>
-            </div>
-
-            {/* Right — auto-scrolling hero carousel */}
-            <div className="w-full lg:w-[56%]">
-              <HeroCarousel
-                slides={HERO_SLIDES}
-                speed={35}
-                className="pb-2"
-              />
-            </div>
-
-          </div>
-        </div>
-      </section>
 
       {/* ── Cases ── */}
       {cases.length > 0 && (
@@ -258,7 +196,7 @@ export default function Home({ cases, articles, agents }: HomeProps) {
                   전문 변호사
                 </h2>
                 <p className="text-[13px] text-gray-500 mt-1">
-                  이혼·가사 분야에서 수많은 승소를 이끌어낸 변호사진
+                  형사 분야에서 수많은 승소·불기소를 이끌어낸 변호사진
                 </p>
               </div>
               <Link href="/attorneys" className="text-[13px] font-semibold text-gray-600 hover:text-gray-900 no-underline inline-flex items-center min-h-11 px-2 py-2">

@@ -27,7 +27,7 @@ export default function AttorneysPage({ agents }: AttorneysPageProps) {
             {SITE_CONFIG.practiceArea} 전문 변호사
           </h1>
           <p className="text-[14px] text-white/60 mt-2">
-            이혼·가사 분야 전문 변호사가 처음부터 끝까지 직접 담당합니다
+            형사 분야 전문 변호사가 수사 단계부터 항소심까지 직접 담당합니다
           </p>
         </div>
       </div>
