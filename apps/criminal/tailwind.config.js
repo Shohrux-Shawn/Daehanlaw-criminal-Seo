@@ -8,10 +8,10 @@ module.exports = {
   theme: {
     extend: {
       screens: {
-        'xs':  '480px',
+        'xs':  '360px',
         'md2': '900px',
         'lg2': '1200px',
-        '3xl': '1920px',
+        '3xl': '1700px',
         '5xl': '2560px',
       },
       borderRadius: {
@@ -73,6 +73,7 @@ module.exports = {
           700: '#a8842a',
           800: '#866720',
         },
+        mainBlue: '#1F6F5C',
       },
       fontFamily: {
         sans: ['Pretendard', '"Noto Sans KR"', 'sans-serif'],
