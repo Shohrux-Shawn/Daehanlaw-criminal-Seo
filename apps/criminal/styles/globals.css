@@ -29,6 +29,38 @@
     --destructive: 0 84% 60%;
     --destructive-foreground: 0 0% 100%;
     --radius: 0.5rem;
+
+    /* warm cream palette for new homepage sections */
+    --cream-page: #fbf7ef;
+    --cream-section: #f5ede0;
+    --cream-card: #f8f1e3;
+    --gold-warm: #b8956a;
+    --gold-warm-deep: #8a6e4a;
+    --ink-strong: #2a241d;
+    --ink-muted: #6b5f4f;
+  }
+
+  /* Typography utilities — daeryunlaw-style tight headings */
+  .heading-xl {
+    font-size: clamp(2.25rem, 5vw, 4rem);
+    font-weight: 900;
+    letter-spacing: -0.035em;
+    line-height: 1.12;
+    color: var(--ink-strong);
+  }
+  .heading-lg {
+    font-size: clamp(1.75rem, 3.5vw, 2.75rem);
+    font-weight: 900;
+    letter-spacing: -0.03em;
+    line-height: 1.18;
+    color: var(--ink-strong);
+  }
+  .eyebrow {
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--gold-warm-deep);
   }
 
   html,

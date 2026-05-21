@@ -15,13 +15,13 @@ $ next build
    Collecting build traces ...
 
 Route (pages)                              Size     First Load JS
-┌ ● / (ISR: 60 Seconds)                    12.3 kB         213 kB
+┌ ● / (ISR: 60 Seconds) (309 ms)           18.4 kB         219 kB
 ├   /_app                                  0 B             142 kB
 ├ ○ /404                                   180 B           142 kB
-├ ● /about (ISR: 1800 Seconds)             6.99 kB         207 kB
+├ ● /about (ISR: 1800 Seconds)             6.92 kB         208 kB
 ├ ○ /about/advantages                      6.15 kB         171 kB
 ├ ○ /about/location                        3.37 kB         162 kB
-├ ○ /admin/articles                        7.13 kB         151 kB
+├ ○ /admin/articles                        7.13 kB         152 kB
 ├ ○ /admin/login                           3.69 kB         145 kB
 ├ ƒ /api/chat                              0 B             142 kB
 ├ ● /articles (ISR: 60 Seconds)            1.32 kB         160 kB
@@ -39,12 +39,12 @@ Route (pages)                              Size     First Load JS
 ├ ƒ /practice/criminal                     2.13 kB         160 kB
 ├ ○ /search                                4.87 kB         166 kB
 └ ƒ /sitemap.xml                           250 B           142 kB
-+ First Load JS shared by all              155 kB
++ First Load JS shared by all              157 kB
   ├ chunks/framework-d805e4be61624b3f.js   45.2 kB
   ├ chunks/main-c6c3ef767ac15ae7.js        36.8 kB
   ├ chunks/pages/_app-117370e957c31230.js  58 kB
-  ├ css/0fd57576d311d440.css               13.4 kB
-  └ other shared chunks (total)            1.69 kB
+  ├ css/ac0ebe35f3babd17.css               15 kB
+  └ other shared chunks (total)            1.75 kB
 
 ƒ Middleware                               27 kB
 
@@ -53,4 +53,4 @@ Route (pages)                              Size     First Load JS
    (ISR)      incremental static regeneration (uses revalidate in getStaticProps)
 ƒ  (Dynamic)  server-rendered on demand
 
-Done in 10.61s.
+Done in 13.25s.
