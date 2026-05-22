@@ -14,8 +14,8 @@ export default function CasesPage({ cases }: CasesPageProps) {
     <Layout>
       <SeoHead
         config={SITE_CONFIG}
-        title={`${SITE_CONFIG.practiceArea} 주요 승소사례`}
-        description={`대한중앙 ${SITE_CONFIG.practiceArea} 전문변호사의 실제 승소 사례를 확인하세요.`}
+        title={`형사 주요 변호 사례 | 부산 해운대 형사전문변호사`}
+        description={`법무법인 대한중앙 해운대사무소의 형사 사건 변호 사례 — 무죄·불기소·집행유예 등 의뢰인에게 유리한 결과를 이끌어낸 실제 사례입니다.`}
         canonicalPath="/cases"
       />
       {/* Page banner */}

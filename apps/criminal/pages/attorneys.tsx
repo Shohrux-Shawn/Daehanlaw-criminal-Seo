@@ -9,13 +9,37 @@ interface AttorneysPageProps {
 }
 
 export default function AttorneysPage({ agents }: AttorneysPageProps) {
+  const attorneysSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'ItemList',
+    name: '법무법인 대한중앙 해운대사무소 형사 전문 변호사',
+    numberOfItems: agents.length,
+    itemListElement: agents.map((a, i) => ({
+      '@type': 'ListItem',
+      position: i + 1,
+      item: {
+        '@type': 'Person',
+        name: a.agentFullName,
+        jobTitle: '형사 전문 변호사',
+        ...(a.agentImage?.[0] ? { image: a.agentImage[0] } : {}),
+        worksFor: {
+          '@type': 'LegalService',
+          name: SITE_CONFIG.legalName ?? '법무법인 대한중앙',
+          url: SITE_CONFIG.siteUrl,
+        },
+        url: `https://www.daehanlaw.com/attorneys/${a._id}`,
+      },
+    })),
+  };
+
   return (
     <Layout>
       <SeoHead
         config={SITE_CONFIG}
-        title={`${SITE_CONFIG.practiceArea} 전문변호사`}
-        description={`${SITE_CONFIG.practiceArea} 분야 전문 변호사진을 소개합니다.`}
+        title={`형사 전문 변호사 소개 | 부산 해운대 법무법인 대한중앙`}
+        description={`부산 해운대 형사 전문 변호사 — 법무법인 대한중앙 해운대사무소 소속 변호인이 수사 초기부터 항소심까지 직접 담당합니다.`}
         canonicalPath="/attorneys"
+        schema={attorneysSchema}
       />
       {/* Page banner */}
       <div

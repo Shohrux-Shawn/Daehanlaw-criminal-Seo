@@ -4,6 +4,7 @@ import Layout from '@/components/Layout';
 import { SITE_CONFIG } from '@/site.config';
 import { SeoHead, CtaButton } from '@daehanlaw/ui';
 import { mainSiteLink } from '@daehanlaw/config';
+import BreadcrumbSchema from '@/components/seo/BreadcrumbSchema';
 import {
   getApolloClient,
   GET_ARTICLE,
@@ -88,11 +89,12 @@ export default function ArticleDetailPage({ article }: Props) {
     <Layout>
       <SeoHead
         config={SITE_CONFIG}
-        title={article.articleTitle}
+        title={`${article.articleTitle} | 부산 해운대 형사전문변호사`}
         description={description}
         canonicalPath={`/articles/${article._id}`}
         schema={articleSchema}
       />
+      <BreadcrumbSchema items={[{ label: '홈', path: '/' }, { label: '형사 법률정보', path: '/articles' }, { label: article.articleTitle, path: `/articles/${article._id}` }]} />
 
       <article className="bg-white">
         {/* Header */}

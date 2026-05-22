@@ -7,8 +7,8 @@ export default function ContactPage() {
     <Layout>
       <SeoHead
         config={SITE_CONFIG}
-        title={`${SITE_CONFIG.practiceArea} 상담 신청`}
-        description={`${SITE_CONFIG.practiceArea} 전문변호사와 상담을 신청하세요. 재산분할, 양육권, 위자료 — 의뢰인의 권리를 지켜드립니다.`}
+        title={`상담 신청 | 부산 해운대 형사전문변호사`}
+        description="법무법인 대한중앙 해운대사무소에 형사사건 상담을 신청하세요. 구속·체포영장 대응, 수사·재판, 항소·상고까지 형사 전문 변호사가 직접 답변드립니다. 부산광역시 해운대구 해운대로 554."
         canonicalPath="/contact"
       />
       {/* Page banner */}

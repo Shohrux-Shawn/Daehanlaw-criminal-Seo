@@ -16,6 +16,22 @@ export interface SiteConfig {
   heroHeadline: string;
   heroSubheadline: string;
   phoneNumber: string;
+  /* ── Canonical NAP / AEO fields (used in JSON-LD on every page) ───────── */
+  /** Legal/registered name of the firm. Used as the canonical `name` in schemas. */
+  legalName?: string;
+  /** Office address, structured for PostalAddress JSON-LD. */
+  officeAddress?: {
+    streetAddress: string;
+    addressLocality: string;
+    addressRegion: string;
+    postalCode?: string;
+    addressCountry: string;
+  };
+  /** Geo coordinates for the office. Used in GeoCoordinates JSON-LD. */
+  geo?: {
+    latitude: number;
+    longitude: number;
+  };
 }
 
 export function mainSiteLink(config: SiteConfig, path: string = '/'): string {

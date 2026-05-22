@@ -13,8 +13,8 @@ export default function ArticlesPage({ articles }: ArticlesPageProps) {
     <Layout>
       <SeoHead
         config={SITE_CONFIG}
-        title={`${SITE_CONFIG.practiceArea} 법률정보`}
-        description={`${SITE_CONFIG.practiceArea} 분야 전문변호사가 작성한 최신 법률 정보와 사례 분석.`}
+        title={`형사 법률정보 | 부산 해운대 형사전문변호사`}
+        description={`부산 해운대 형사 전문 변호사가 작성한 최신 형사 법률 정보와 사례 분석. 법무법인 대한중앙.`}
         canonicalPath="/articles"
       />
       <section className="py-12 sm:py-16">

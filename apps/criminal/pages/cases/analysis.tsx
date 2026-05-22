@@ -15,8 +15,8 @@ export default function AnalysisPage({ articles }: Props) {
     <Layout>
       <SeoHead
         config={SITE_CONFIG}
-        title={`${SITE_CONFIG.practiceArea} ${SECTION_LABEL}`}
-        description={`${SITE_CONFIG.practiceArea} 분야 ${SECTION_LABEL} — ${SECTION_SUBTITLE}`}
+        title={`형사 ${SECTION_LABEL} | 부산 해운대 형사전문변호사`}
+        description={`법무법인 대한중앙 해운대사무소 — 부산 해운대 형사 ${SECTION_LABEL}. ${SECTION_SUBTITLE}`}
         canonicalPath="/cases/analysis"
       />
       <section className="py-12 sm:py-16">

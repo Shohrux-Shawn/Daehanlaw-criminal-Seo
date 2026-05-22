@@ -26,8 +26,8 @@ export default function PracticeCriminalPage({ propertyMap }: PracticeCriminalPr
     <Layout>
       <SeoHead
         config={SITE_CONFIG}
-        title={`${SITE_CONFIG.practiceArea} 업무분야`}
-        description={`대한중앙 ${SITE_CONFIG.practiceArea} 전문변호사의 주요 업무 분야를 확인하세요.`}
+        title={`형사 업무분야 | 부산 해운대 형사전문변호사`}
+        description={`법무법인 대한중앙 해운대사무소 — 부산 해운대 형사 전문 변호사가 담당하는 폭행·사기·마약·음주운전·구속·항소 등 형사 업무 전 분야 안내.`}
         canonicalPath="/practice/criminal"
       />
       {/* Page banner */}

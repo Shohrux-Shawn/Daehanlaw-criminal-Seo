@@ -1,6 +1,7 @@
 import React from 'react';
 import Link from 'next/link';
 import { MessageCircle, Phone, ArrowRight } from 'lucide-react';
+import { AnimatedBorder } from '@/components/ui/animated-border';
 
 interface SectionCtaBottomProps {
   phoneNumber: string;
@@ -27,11 +28,12 @@ export default function SectionCtaBottom({ phoneNumber }: SectionCtaBottomProps)
         <div className="flex flex-col sm:flex-row gap-3 justify-center">
           <Link
             href="/contact"
-            className="inline-flex items-center justify-center gap-2 h-13 px-7 py-4 rounded-full bg-[color:var(--gold-warm)] hover:bg-[color:var(--gold-warm-deep)] text-white font-semibold text-[15px] shadow-sm transition-colors no-underline"
+            className="relative inline-flex items-center justify-center gap-2 h-13 px-7 py-4 rounded-full bg-[color:var(--gold-warm)] hover:bg-[color:var(--gold-warm-deep)] text-white font-semibold text-[15px] shadow-sm transition-colors no-underline overflow-hidden"
           >
-            <MessageCircle className="w-4 h-4" />
-            온라인 상담 신청
-            <ArrowRight className="w-4 h-4 ml-1" />
+            <AnimatedBorder duration={3} dotSize={70} color="rgba(255,255,255,0.95)" />
+            <MessageCircle className="w-4 h-4 relative" />
+            <span className="relative">온라인 상담 신청</span>
+            <ArrowRight className="w-4 h-4 ml-1 relative" />
           </Link>
           <a
             href={`tel:${phoneNumber}`}

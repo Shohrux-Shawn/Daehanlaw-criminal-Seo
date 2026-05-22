@@ -3,6 +3,7 @@ import Link from 'next/link';
 import { Shield, MessageCircle, Heart, MessageSquare, ArrowRight } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Card } from '@/components/ui/card';
+import { AnimatedBorder } from '@/components/ui/animated-border';
 
 interface ConsultHeroProps {
   badgeText: string;
@@ -89,10 +90,11 @@ const ConsultHero: React.FC<ConsultHeroProps> = ({
                 <Link href={primaryCta.href} className="no-underline">
                   <Button
                     size="lg"
-                    className="h-12 px-6 text-[15px] font-semibold rounded-full bg-[#b8956a] hover:bg-[#a07d52] text-white shadow-sm"
+                    className="relative h-12 px-6 text-[15px] font-semibold rounded-full bg-[#b8956a] hover:bg-[#a07d52] text-white shadow-sm overflow-hidden"
                   >
-                    <MessageCircle className="w-4 h-4 mr-2" />
-                    {primaryCta.text}
+                    <AnimatedBorder duration={3} dotSize={60} />
+                    <MessageCircle className="w-4 h-4 mr-2 relative" />
+                    <span className="relative">{primaryCta.text}</span>
                   </Button>
                 </Link>
                 <Link href={secondaryCta.href} className="no-underline">

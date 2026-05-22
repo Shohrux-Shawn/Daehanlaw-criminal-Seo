@@ -7,6 +7,7 @@ import {
   Landmark, Scale, Gavel, MessageCircle, Navigation, ArrowRight,
 } from 'lucide-react';
 import { GlowCard } from '@/components/ui/spotlight-card';
+import BreadcrumbSchema from '@/components/seo/BreadcrumbSchema';
 
 const ADDR_LINE_1 = '부산광역시 해운대구';
 const ADDR_LINE_2 = '해운대로 554';
@@ -369,10 +370,11 @@ export default function LocationPage() {
     <>
       <SeoHead
         config={SITE_CONFIG}
-        title="오시는 길 | 대한중앙 형사전문센터"
-        description="법무법인 대한중앙 부산사무소 위치 안내. 부산 해운대구 해운대로 554 라온제이빌딩 7층. 부산지방법원·검찰청과 가까운 거리, 365일 24시간 상담 접수."
+        title="오시는 길 | 부산 해운대 형사전문변호사 | 법무법인 대한중앙"
+        description="법무법인 대한중앙 해운대사무소 위치 안내. 부산광역시 해운대구 해운대로 554 라온제이빌딩 7층. 부산지방법원·검찰청과 가까운 거리, 365일 24시간 상담 접수."
         canonicalPath="/about/location"
       />
+      <BreadcrumbSchema items={[{ label: '홈', path: '/' }, { label: '그룹소개', path: '/about' }, { label: '오시는 길', path: '/about/location' }]} />
       <Layout>
         <HeroAddress />
         <PhotoMap />

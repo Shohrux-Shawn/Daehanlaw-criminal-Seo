@@ -11,6 +11,8 @@ import {
 
 import ConsultHero from '@/components/ui/consult-hero';
 import SectionAbout from '@/components/home/SectionAbout';
+import FaqSchema from '@/components/seo/FaqSchema';
+import { CRIMINAL_FAQS } from '@/lib/seo/faqs';
 import SectionFeatures from '@/components/home/SectionFeatures';
 import SectionCases from '@/components/home/SectionCases';
 import SectionInsights from '@/components/home/SectionInsights';
@@ -27,32 +29,42 @@ interface HomeProps {
 const HOME_SCHEMA = {
   '@context': 'https://schema.org',
   '@type': 'LegalService',
-  name: '법무법인 대한중앙 형사전문센터',
-  url: 'https://daehanlaw-criminal.com',
-  telephone: '1533-7377',
+  '@id': `${SITE_CONFIG.siteUrl}/#legalservice`,
+  name: SITE_CONFIG.legalName,
+  alternateName: '대한중앙 형사전문센터',
+  url: SITE_CONFIG.siteUrl,
+  telephone: SITE_CONFIG.phoneNumber,
   address: {
     '@type': 'PostalAddress',
-    streetAddress: '법원로 15',
-    addressLocality: '서초구',
-    addressRegion: '서울',
-    addressCountry: 'KR',
+    ...SITE_CONFIG.officeAddress,
   },
-  areaServed: 'KR',
-  serviceType: ['형사변호', '구속·체포영장 대응', '수사 단계 변호', '형사 항소·상고'],
+  geo: SITE_CONFIG.geo
+    ? { '@type': 'GeoCoordinates', latitude: SITE_CONFIG.geo.latitude, longitude: SITE_CONFIG.geo.longitude }
+    : undefined,
+  areaServed: { '@type': 'AdministrativeArea', name: '대한민국 전국' },
+  serviceArea: { '@type': 'AdministrativeArea', name: '부산광역시 해운대구' },
+  serviceType: ['형사변호', '구속·체포영장 대응', '수사 단계 변호', '공판 변호', '형사 항소·상고'],
   priceRange: '상담 무료',
+  knowsLanguage: ['ko-KR'],
+  sameAs: [
+    'https://blog.naver.com/hanbyungchul',
+    'https://open.kakao.com/o/smlz9Hi',
+    'https://www.daehanlaw.com',
+  ],
 };
 
-export default function Home({ cases, articles, agents }: HomeProps) {
+export default function Home({ cases, articles }: HomeProps) {
   const [headlineLine1, headlineLine2] = SITE_CONFIG.heroHeadline.split('\n');
 
   return (
     <Layout>
       <SeoHead
         config={SITE_CONFIG}
-        title={`${SITE_CONFIG.practiceArea} 전문 법무법인`}
-        description={`${SITE_CONFIG.practiceArea} 분야 전문 변호사가 구속·체포영장 대응, 수사·재판, 항소·상고까지 모든 형사 사건을 신속하고 정확하게 변호해 드립니다.`}
+        title={`부산 해운대 형사전문변호사 | 법무법인 대한중앙`}
+        description={`법무법인 대한중앙 해운대사무소 — 부산 해운대 형사 전문 변호사. 구속·체포영장 대응, 수사·재판, 항소·상고까지 형사 사건 전 단계를 직접 변호합니다.`}
         schema={HOME_SCHEMA}
       />
+      <FaqSchema items={CRIMINAL_FAQS} />
 
       {/* S1 — Hero */}
       <ConsultHero

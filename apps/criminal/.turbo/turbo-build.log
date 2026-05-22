@@ -15,35 +15,35 @@ $ next build
    Collecting build traces ...
 
 Route (pages)                              Size     First Load JS
-┌ ● / (ISR: 60 Seconds)                    18.7 kB         221 kB
+┌ ● / (ISR: 60 Seconds)                    19 kB           221 kB
 ├   /_app                                  0 B             142 kB
 ├ ○ /404                                   2.8 kB          197 kB
 ├ ○ /about                                 8.7 kB          203 kB
-├ ○ /about/advantages                      7.32 kB         201 kB
+├ ○ /about/advantages                      7.32 kB         202 kB
 ├ ○ /about/location                        7.52 kB         202 kB
 ├ ○ /admin/articles                        9.16 kB         161 kB
 ├ ○ /admin/login                           3.69 kB         145 kB
 ├ ƒ /api/chat                              0 B             142 kB
-├ ● /articles (ISR: 60 Seconds)            1.32 kB         195 kB
+├ ● /articles (ISR: 60 Seconds)            1.32 kB         196 kB
 ├ ● /articles/[id]                         2.89 kB         197 kB
 ├ ● /attorneys (ISR: 900 Seconds)          1.54 kB         196 kB
 ├ ● /cases (ISR: 60 Seconds)               1.54 kB         196 kB
 ├ ● /cases/[id]                            2.79 kB         197 kB
-├ ● /cases/analysis (ISR: 60 Seconds)      1.39 kB         195 kB
-├ ● /cases/insights (ISR: 60 Seconds)      1.37 kB         195 kB
-├ ● /cases/knowledge (ISR: 60 Seconds)     1.37 kB         195 kB
-├ ● /cases/reviews (ISR: 60 Seconds)       1.36 kB         195 kB
-├ ○ /contact                               1.36 kB         195 kB
+├ ● /cases/analysis (ISR: 60 Seconds)      1.39 kB         196 kB
+├ ● /cases/insights (ISR: 60 Seconds)      1.37 kB         196 kB
+├ ● /cases/knowledge (ISR: 60 Seconds)     1.37 kB         196 kB
+├ ● /cases/reviews (ISR: 60 Seconds)       1.36 kB         196 kB
+├ ○ /contact                               1.36 kB         196 kB
 ├ ○ /login                                 3.23 kB         197 kB
 ├ ● /practice/all (ISR: 3600 Seconds)      4.92 kB         199 kB
 ├ ƒ /practice/criminal                     2.13 kB         196 kB
 ├ ○ /search                                4.84 kB         202 kB
 └ ƒ /sitemap.xml                           250 B           142 kB
-+ First Load JS shared by all              158 kB
++ First Load JS shared by all              159 kB
   ├ chunks/framework-d805e4be61624b3f.js   45.2 kB
   ├ chunks/main-c6c3ef767ac15ae7.js        36.8 kB
   ├ chunks/pages/_app-117370e957c31230.js  58 kB
-  ├ css/1f62303d6a571e28.css               16.6 kB
+  ├ css/01ab0da1ef695db3.css               16.8 kB
   └ other shared chunks (total)            1.78 kB
 
 ƒ Middleware                               27 kB
@@ -53,4 +53,4 @@ Route (pages)                              Size     First Load JS
    (ISR)      incremental static regeneration (uses revalidate in getStaticProps)
 ƒ  (Dynamic)  server-rendered on demand
 
-Done in 10.54s.
+Done in 10.85s.

@@ -1,6 +1,7 @@
 import { useState, useEffect, FormEvent } from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
+import { motion } from 'framer-motion';
 import type { SiteConfig } from '@daehanlaw/config';
 
 interface NavbarProps { config: SiteConfig; }
@@ -112,13 +113,15 @@ export function Navbar({ config }: NavbarProps) {
   function ChildLink({ child, onClick }: { child: NavChild; onClick?: () => void }) {
     const active = router.pathname === child.href;
     const cls = `group flex items-center gap-2 text-[13px] leading-snug transition-all duration-150 no-underline ${
-      active ? 'text-gold-400 font-semibold' : 'text-white/70 hover:text-white font-medium'
+      active ? 'text-[color:var(--gold-warm)] font-semibold' : 'text-white/70 hover:text-white font-medium'
     }`;
     const inner = (
       <>
         <svg
           className={`w-3 h-3 flex-shrink-0 transition-all duration-150 ${
-            active ? 'text-gold-400 translate-x-0.5' : 'text-white/20 group-hover:text-white/60 group-hover:translate-x-1'
+            active
+              ? 'text-[color:var(--gold-warm)] translate-x-0.5'
+              : 'text-white/20 group-hover:text-[color:var(--gold-warm)] group-hover:translate-x-1'
           }`}
           fill="none" viewBox="0 0 24 24" stroke="currentColor"
         >
@@ -186,7 +189,7 @@ export function Navbar({ config }: NavbarProps) {
         </div>
 
         {/* ── Main nav bar ────────────────────────────────────────────────── */}
-        <div className={`transition-colors duration-300 ${isOpen ? 'bg-[#1a1a1a]' : 'bg-white border-b border-gray-100'}`}>
+        <div className={`transition-colors duration-300 ${isOpen ? 'bg-[#3b3939]' : 'bg-white border-b border-gray-100'}`}>
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="flex items-center justify-between h-[68px]">
 
@@ -208,7 +211,7 @@ export function Navbar({ config }: NavbarProps) {
                   const cls = `relative flex items-center px-5 text-[13.5px] font-semibold tracking-wide transition-colors duration-200 border-b-2 no-underline ${
                     isOpen
                       ? hovered
-                        ? 'text-white border-gold-400'
+                        ? 'text-white border-[color:var(--gold-warm)]'
                         : 'text-white/30 border-transparent hover:text-white/60'
                       : active
                         ? 'text-navy-900 border-gold-500'
@@ -257,11 +260,29 @@ export function Navbar({ config }: NavbarProps) {
                 </button>
                 <Link
                   href="/contact"
-                  className={`px-6 py-2.5 text-[13px] font-bold rounded-lg transition-all duration-300 no-underline ${
-                    isOpen ? 'bg-white text-navy-900 hover:bg-white/90' : 'bg-navy-800 text-white hover:bg-navy-700 shadow-sm'
+                  className={`relative px-6 py-2.5 text-[13px] font-bold rounded-lg transition-all duration-300 no-underline overflow-hidden ${
+                    isOpen
+                      ? 'bg-[color:var(--gold-warm)] text-white hover:bg-[color:var(--gold-warm-deep)]'
+                      : 'bg-navy-800 text-white hover:bg-navy-700 shadow-sm'
                   }`}
                 >
-                  상담
+                  <span
+                    aria-hidden
+                    className="-inset-px pointer-events-none absolute rounded-[inherit] border-[3px] border-transparent [mask-clip:padding-box,border-box] [mask-composite:intersect] [mask-image:linear-gradient(transparent,transparent),linear-gradient(#000,#000)]"
+                  >
+                    <motion.span
+                      className="absolute aspect-square block"
+                      style={{
+                        width: 40,
+                        backgroundImage: 'linear-gradient(to right, transparent 0%, var(--gold-warm) 40%, #ffffff 100%)',
+                        filter: 'drop-shadow(0 0 6px var(--gold-warm)) drop-shadow(0 0 10px var(--gold-warm))',
+                        offsetPath: 'rect(0 auto auto 0 round 40px)',
+                      }}
+                      animate={{ offsetDistance: ['0%', '100%'] }}
+                      transition={{ repeat: Infinity, duration: 3, ease: 'linear' }}
+                    />
+                  </span>
+                  <span className="relative">상담</span>
                 </Link>
               </div>
 
@@ -288,9 +309,12 @@ export function Navbar({ config }: NavbarProps) {
           aria-hidden={!isOpen}
         >
           {/* Gold separator line */}
-          <div className="h-[2px] bg-gradient-to-r from-transparent via-gold-500 to-transparent" />
+          <div className="h-[2px] bg-gradient-to-r from-transparent via-[color:var(--gold-warm)] to-transparent" />
 
-          <div className="shadow-2xl" style={{ background: 'linear-gradient(180deg, #3b3939 0%, #4d4646 100%)' }}>
+          <div
+            className="shadow-2xl"
+            style={{ background: 'linear-gradient(180deg, #3b3939 0%, #4d4646 100%)' }}
+          >
             <div className="max-w-7xl mx-auto px-6 lg:px-10 py-10">
               <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-0 divide-x divide-white/[0.06]">
                 {navLinks.map(link => {
@@ -310,7 +334,7 @@ export function Navbar({ config }: NavbarProps) {
                           ? <a href={link.href} target="_blank" rel="noopener noreferrer" tabIndex={isOpen ? 0 : -1} className={headerCls}>{link.label}</a>
                           : <Link href={link.href} tabIndex={isOpen ? 0 : -1} className={headerCls}>{link.label}</Link>
                         }
-                        <div className={`h-[1.5px] rounded-full transition-all duration-300 ${colHovered ? 'bg-gold-500 w-full' : 'bg-white/20 w-full'}`} />
+                        <div className={`h-[1.5px] rounded-full transition-all duration-300 ${colHovered ? 'bg-[color:var(--gold-warm)] w-full' : 'bg-white/20 w-full'}`} />
                       </div>
                       <ul className="space-y-[10px]">
                         {link.children.map(child => (

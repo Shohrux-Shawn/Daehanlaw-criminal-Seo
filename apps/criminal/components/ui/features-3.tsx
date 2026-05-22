@@ -30,7 +30,7 @@ export default function Features3({ heading, className }: Features3Props) {
           {heading}
         </h2>
 
-        <div className="mt-12 grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
+        <div className="mt-12 grid grid-cols-1 gap-8 md:grid-cols-2 md:gap-10 lg:grid-cols-3 lg:gap-12">
           {/* Feature 1 — Emergency consultation */}
           <GlowCard customSize glowColor="warm" className={cn('overflow-hidden', softCard)}>
             <CalendarCheck className="size-5 text-[color:var(--gold-warm-deep)]" strokeWidth={2.2} />

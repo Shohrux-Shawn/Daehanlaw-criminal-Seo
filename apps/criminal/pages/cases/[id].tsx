@@ -4,6 +4,7 @@ import Layout from '@/components/Layout';
 import { SITE_CONFIG } from '@/site.config';
 import { SeoHead, CtaButton } from '@daehanlaw/ui';
 import { getApolloClient, GET_CASE, type Case } from '@daehanlaw/graphql';
+import BreadcrumbSchema from '@/components/seo/BreadcrumbSchema';
 
 interface Props {
   legalCase: Case | null;
@@ -72,11 +73,12 @@ export default function CaseDetailPage({ legalCase }: Props) {
     <Layout>
       <SeoHead
         config={SITE_CONFIG}
-        title={`${legalCase.caseTitle} | ${SITE_CONFIG.practiceArea} 승소사례`}
-        description={legalCase.caseDesc ? legalCase.caseDesc.replace(/<[^>]*>/g, '').slice(0, 160) : `${SITE_CONFIG.practiceArea} 승소사례`}
+        title={`${legalCase.caseTitle} | 형사 변호 사례 | 부산 해운대 형사전문변호사`}
+        description={legalCase.caseDesc ? legalCase.caseDesc.replace(/<[^>]*>/g, '').slice(0, 160) : `법무법인 대한중앙 해운대사무소의 형사 변호 사례.`}
         canonicalPath={`/cases/${legalCase._id}`}
         schema={caseSchema}
       />
+      <BreadcrumbSchema items={[{ label: '홈', path: '/' }, { label: '형사 변호 사례', path: '/cases' }, { label: legalCase.caseTitle, path: `/cases/${legalCase._id}` }]} />
 
       <article className="bg-white">
         {/* Header */}

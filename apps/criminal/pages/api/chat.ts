@@ -20,7 +20,7 @@ function buildSystemPrompt(practiceArea: string, phoneNumber: string, redirect: 
   return `${base}
 
 중요: 사용자가 이미 여러 번 질문했습니다. 답변 마지막에 반드시 다음 문구를 포함하세요:
-"더 자세한 상담이 필요하시면 전문 변호사와 직접 상담받으시는 것을 추천드립니다. 📞 전화: ${phoneNumber}"`;
+"더 자세한 상담은 전문 변호사와 직접 진행하실 수 있습니다. 📞 전화: ${phoneNumber}"`;
 }
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {

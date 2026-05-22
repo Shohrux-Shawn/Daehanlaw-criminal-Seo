@@ -211,8 +211,8 @@ export default function PracticeAllPage() {
     <Layout>
       <SeoHead
         config={SITE_CONFIG}
-        title="전체 업무분야"
-        description="법무법인 대한중앙의 전체 업무분야를 확인하세요."
+        title="전체 업무분야 | 부산 해운대 법무법인 대한중앙"
+        description="법무법인 대한중앙 해운대사무소의 전체 업무분야 안내 — 형사·민사·가사·기업·행정 등 부산 해운대 지역 법률 서비스."
         canonicalPath="/practice/all"
       />
 
