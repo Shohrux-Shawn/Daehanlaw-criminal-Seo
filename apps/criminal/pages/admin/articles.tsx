@@ -9,6 +9,16 @@ import {
   type Article,
   type Articles,
 } from '@daehanlaw/graphql';
+import { usePagination } from '@/lib/hooks/usePagination';
+import {
+  Pagination,
+  PaginationContent,
+  PaginationEllipsis,
+  PaginationItem,
+  PaginationLink,
+  PaginationNext,
+  PaginationPrevious,
+} from '@/components/ui/pagination';
 
 const ArticleModal = dynamic(() => import('@/components/admin/ArticleModal'), { ssr: false });
 
@@ -175,25 +185,11 @@ export default function AdminArticlesPage() {
         )}
 
         {totalPages > 1 && (
-          <div className="flex items-center justify-center gap-2 mt-6">
-            <button
-              disabled={page <= 1}
-              onClick={() => setPage(p => p - 1)}
-              className="px-3 py-1.5 text-xs font-semibold text-gray-600 border border-gray-200 rounded-lg disabled:opacity-40"
-            >
-              이전
-            </button>
-            <span className="text-xs text-gray-500">
-              {page} / {totalPages}
-            </span>
-            <button
-              disabled={page >= totalPages}
-              onClick={() => setPage(p => p + 1)}
-              className="px-3 py-1.5 text-xs font-semibold text-gray-600 border border-gray-200 rounded-lg disabled:opacity-40"
-            >
-              다음
-            </button>
-          </div>
+          <AdminPagination
+            currentPage={page}
+            totalPages={totalPages}
+            onPageChange={setPage}
+          />
         )}
       </main>
 
@@ -218,5 +214,78 @@ export default function AdminArticlesPage() {
         />
       )}
     </div>
+  );
+}
+
+interface AdminPaginationProps {
+  currentPage: number;
+  totalPages: number;
+  onPageChange: (page: number) => void;
+}
+
+function AdminPagination({ currentPage, totalPages, onPageChange }: AdminPaginationProps) {
+  const { pages, showLeftEllipsis, showRightEllipsis } = usePagination({
+    currentPage,
+    totalPages,
+    paginationItemsToDisplay: 7,
+  });
+
+  return (
+    <Pagination className="mt-6">
+      <PaginationContent>
+        <PaginationItem>
+          <PaginationPrevious
+            onClick={() => currentPage > 1 && onPageChange(currentPage - 1)}
+            aria-disabled={currentPage === 1}
+            className={currentPage === 1 ? 'pointer-events-none opacity-40' : ''}
+          />
+        </PaginationItem>
+
+        {showLeftEllipsis && (
+          <>
+            <PaginationItem>
+              <PaginationLink onClick={() => onPageChange(1)} isActive={currentPage === 1}>
+                1
+              </PaginationLink>
+            </PaginationItem>
+            <PaginationItem>
+              <PaginationEllipsis />
+            </PaginationItem>
+          </>
+        )}
+
+        {pages.map((p) => (
+          <PaginationItem key={p}>
+            <PaginationLink onClick={() => onPageChange(p)} isActive={currentPage === p}>
+              {p}
+            </PaginationLink>
+          </PaginationItem>
+        ))}
+
+        {showRightEllipsis && (
+          <>
+            <PaginationItem>
+              <PaginationEllipsis />
+            </PaginationItem>
+            <PaginationItem>
+              <PaginationLink
+                onClick={() => onPageChange(totalPages)}
+                isActive={currentPage === totalPages}
+              >
+                {totalPages}
+              </PaginationLink>
+            </PaginationItem>
+          </>
+        )}
+
+        <PaginationItem>
+          <PaginationNext
+            onClick={() => currentPage < totalPages && onPageChange(currentPage + 1)}
+            aria-disabled={currentPage === totalPages}
+            className={currentPage === totalPages ? 'pointer-events-none opacity-40' : ''}
+          />
+        </PaginationItem>
+      </PaginationContent>
+    </Pagination>
   );
 }

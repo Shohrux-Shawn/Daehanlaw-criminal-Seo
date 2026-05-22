@@ -1,5 +1,6 @@
 import React from 'react';
 import { PhoneCall, FileSearch, Handshake, ClipboardList, Gavel, ShieldCheck } from 'lucide-react';
+import { GlowCard } from '@/components/ui/spotlight-card';
 
 const STEPS = [
   { num: '01', Icon: PhoneCall,     title: '상담 신청',        body: '전화 또는 온라인으로 24시간 상담 신청 접수' },
@@ -26,9 +27,11 @@ export default function SectionProcess() {
 
         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
           {STEPS.map(({ num, Icon, title, body }) => (
-            <div
+            <GlowCard
               key={num}
-              className="flex flex-col p-6 rounded-2xl bg-white border border-[#e8dcc4]/70 hover:border-[color:var(--gold-warm)] hover:shadow-[0_12px_30px_rgba(60,40,20,0.08)] transition-all duration-300"
+              customSize
+              glowColor="warm"
+              className="flex flex-col p-6 bg-white hover:shadow-[0_12px_30px_rgba(60,40,20,0.08)] transition-shadow"
             >
               <div className="flex items-center justify-between mb-5">
                 <span className="text-[26px] font-black tracking-[-0.04em] text-[color:var(--gold-warm-deep)]">{num}</span>
@@ -38,7 +41,7 @@ export default function SectionProcess() {
               </div>
               <h3 className="text-[15px] sm:text-[16px] font-extrabold text-[color:var(--ink-strong)] tracking-tight mb-2">{title}</h3>
               <p className="text-[12.5px] text-[color:var(--ink-muted)] leading-relaxed">{body}</p>
-            </div>
+            </GlowCard>
           ))}
         </div>
       </div>

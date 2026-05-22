@@ -1,6 +1,7 @@
 import React from 'react';
 import { Card } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
+import { GlowCard } from '@/components/ui/spotlight-card';
 import {
   ArrowUp,
   CalendarCheck,
@@ -13,7 +14,7 @@ import {
 } from 'lucide-react';
 import { cn } from '@/lib/utils';
 
-const softCard = 'bg-muted/40 border-border/40 shadow-none';
+const softCard = 'bg-muted/40 shadow-none p-6';
 const innerCard = 'bg-background border-border/60 shadow-sm';
 
 interface Features3Props {
@@ -31,7 +32,7 @@ export default function Features3({ heading, className }: Features3Props) {
 
         <div className="mt-12 grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
           {/* Feature 1 — Emergency consultation */}
-          <Card className={cn('overflow-hidden p-6', softCard)}>
+          <GlowCard customSize glowColor="warm" className={cn('overflow-hidden', softCard)}>
             <CalendarCheck className="size-5 text-[color:var(--gold-warm-deep)]" strokeWidth={2.2} />
             <h3 className="text-foreground mt-5 text-lg font-semibold tracking-tight">
               24시간 긴급 상담
@@ -40,10 +41,10 @@ export default function Features3({ heading, className }: Features3Props) {
               구속·체포 등 긴급 상황에 즉시 전담 변호인이 배정되어 상담을 진행합니다.
             </p>
             <MeetingIllustration />
-          </Card>
+          </GlowCard>
 
           {/* Feature 2 — Case analysis report */}
-          <Card className={cn('group overflow-hidden px-6 pt-6', softCard)}>
+          <GlowCard customSize glowColor="warm" className={cn('group overflow-hidden', softCard.replace('p-6', 'px-6 pt-6'))}>
             <ShieldCheck className="size-5 text-[color:var(--gold-warm-deep)]" strokeWidth={2.2} />
             <h3 className="text-foreground mt-5 text-lg font-semibold tracking-tight">
               사건 분석 보고서
@@ -52,10 +53,10 @@ export default function Features3({ heading, className }: Features3Props) {
               담당 변호사가 사실관계·증거·쟁점을 분석한 보고서를 통해 변호 전략을 설계합니다.
             </p>
             <CaseAnalysisIllustration />
-          </Card>
+          </GlowCard>
 
           {/* Feature 3 — AI assistant */}
-          <Card className={cn('group overflow-hidden px-6 pt-6', softCard)}>
+          <GlowCard customSize glowColor="warm" className={cn('group overflow-hidden', softCard.replace('p-6', 'px-6 pt-6'))}>
             <Sparkles className="size-5 text-[color:var(--gold-warm-deep)]" strokeWidth={2.2} />
             <h3 className="text-foreground mt-5 text-lg font-semibold tracking-tight">
               AI 사전 상담
@@ -66,7 +67,7 @@ export default function Features3({ heading, className }: Features3Props) {
             <div className="-mx-2 -mt-2 px-2 pt-2 [mask-image:linear-gradient(to_bottom,#000_60%,transparent)]">
               <AIAssistantIllustration />
             </div>
-          </Card>
+          </GlowCard>
         </div>
       </div>
     </section>

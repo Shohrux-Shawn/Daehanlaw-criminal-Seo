@@ -2,6 +2,7 @@ import React from 'react';
 import Link from 'next/link';
 import { ArrowRight, Calendar } from 'lucide-react';
 import type { Article } from '@daehanlaw/graphql';
+import { GlowCard } from '@/components/ui/spotlight-card';
 
 interface SectionInsightsProps {
   articles: Article[];
@@ -47,9 +48,10 @@ export default function SectionInsights({ articles }: SectionInsightsProps) {
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-5">
           {/* Featured */}
+          <GlowCard customSize glowColor="warm" className="bg-white shadow-[0_8px_30px_rgba(60,40,20,0.06)] hover:shadow-[0_16px_40px_rgba(60,40,20,0.12)] transition-shadow overflow-hidden">
           <Link
             href={`/articles/${featured._id}`}
-            className="group flex flex-col rounded-2xl overflow-hidden bg-white border border-[#e8dcc4]/60 shadow-[0_8px_30px_rgba(60,40,20,0.06)] hover:shadow-[0_16px_40px_rgba(60,40,20,0.12)] transition-shadow duration-300 no-underline"
+            className="group flex flex-col no-underline h-full"
           >
             <div className="aspect-[16/9] overflow-hidden bg-[#f5ede0]">
               <img
@@ -76,14 +78,15 @@ export default function SectionInsights({ articles }: SectionInsightsProps) {
               </p>
             </div>
           </Link>
+          </GlowCard>
 
           {/* Side list */}
           <div className="flex flex-col gap-5">
             {rest.slice(0, 3).map((a) => (
+              <GlowCard key={a._id} customSize glowColor="warm" className="bg-white shadow-[0_4px_18px_rgba(60,40,20,0.05)] hover:shadow-[0_10px_28px_rgba(60,40,20,0.1)] transition-shadow">
               <Link
-                key={a._id}
                 href={`/articles/${a._id}`}
-                className="group flex gap-4 sm:gap-5 p-4 sm:p-5 rounded-2xl bg-white border border-[#e8dcc4]/60 shadow-[0_4px_18px_rgba(60,40,20,0.05)] hover:shadow-[0_10px_28px_rgba(60,40,20,0.1)] transition-shadow duration-300 no-underline"
+                className="group flex gap-4 sm:gap-5 p-4 sm:p-5 no-underline h-full"
               >
                 <div className="flex-shrink-0 w-28 sm:w-36 aspect-square rounded-xl overflow-hidden bg-[#f5ede0]">
                   <img
@@ -101,6 +104,7 @@ export default function SectionInsights({ articles }: SectionInsightsProps) {
                   </h3>
                 </div>
               </Link>
+              </GlowCard>
             ))}
           </div>
         </div>

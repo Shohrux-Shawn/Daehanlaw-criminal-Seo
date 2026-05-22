@@ -2,6 +2,7 @@ import React, { useEffect, useRef } from 'react';
 import {
   Scale, Gavel, ShieldCheck, Search, Globe, Users, ArrowRight,
 } from 'lucide-react';
+import { GlowCard } from '@/components/ui/spotlight-card';
 
 /** New emerald/gold scheme. mainBlue token in tailwind.config maps to the emerald primary. */
 const ACCENT = '#C8962E';
@@ -310,17 +311,18 @@ const CriminalLawLanding: React.FC<Props> = ({
           </p>
           <div className="mt-[80px] grid grid-cols-4 gap-6 max-lg:grid-cols-2 max-md:grid-cols-1">
             {STAGES.map((s, i) => (
-              <div
+              <GlowCard
                 key={s.t}
-                className="rounded-[20px] p-8 text-left"
-                style={{ background: 'rgba(255,255,255,0.05)', border: `1px solid ${ACCENT}40` }}
+                customSize
+                glowColor="warm"
+                className="p-8 text-left bg-white/5"
               >
                 <span className="text-[18px] font-[800]" style={{ color: ACCENT }}>0{i + 1}</span>
                 <h3 className="mt-2 text-[24px] font-[800] text-white">{s.t}</h3>
                 <ul className="mt-5 space-y-2 text-[15px] leading-[1.7] text-white/80">
                   {s.d.map((d) => <li key={d}>· {d}</li>)}
                 </ul>
-              </div>
+              </GlowCard>
             ))}
           </div>
         </div>
@@ -355,13 +357,13 @@ const CriminalLawLanding: React.FC<Props> = ({
           </p>
           <div className="mt-12 grid grid-cols-3 gap-6 text-left max-lg:grid-cols-1">
             {STEPS.map((s) => (
-              <div key={s.no} className="rounded-[20px] border bg-white p-8" style={{ borderColor: '#EAF2EE' }}>
+              <GlowCard key={s.no} customSize glowColor="warm" className="bg-white p-8">
                 <span className="text-[16px] font-[800]" style={{ color: ACCENT }}>{s.no}</span>
                 <h4 className="mt-2 text-[20px] font-[800]" style={{ color: FOREST }}>{s.t}</h4>
                 <ul className="mt-4 space-y-2 text-[15px] leading-[1.7] text-[#555656]">
                   {s.d.map((d) => <li key={d}>· {d}</li>)}
                 </ul>
-              </div>
+              </GlowCard>
             ))}
           </div>
         </div>
@@ -413,12 +415,13 @@ const CriminalLawLanding: React.FC<Props> = ({
           <p className="mt-6 text-[28px] text-[#555656] max-3xl:text-[24px] max-lg:text-[20px] max-md:text-[15px]">
             대한중앙이 직접 수행해 의뢰인에게 유리한 결과를 이끌어낸 대표 사례입니다
           </p>
-          <ul className="mt-14 grid grid-cols-2 gap-6 text-left max-lg:grid-cols-1">
+          <div className="mt-14 grid grid-cols-2 gap-6 text-left max-lg:grid-cols-1">
             {CASES.map(([desc, result]) => (
-              <li
+              <GlowCard
                 key={result}
-                className="flex items-start justify-between gap-4 rounded-[16px] border bg-[#F4F7F5] p-7"
-                style={{ borderColor: '#EAF2EE' }}
+                customSize
+                glowColor="warm"
+                className="flex items-start justify-between gap-4 bg-[#F4F7F5] p-7"
               >
                 <div className="flex items-start gap-3">
                   <Gavel size={22} style={{ color: '#1F6F5C' }} className="mt-1 shrink-0" />
@@ -427,9 +430,9 @@ const CriminalLawLanding: React.FC<Props> = ({
                 <span className="shrink-0 rounded-md px-3 py-1.5 text-[14px] font-[800] text-white" style={{ background: '#1F6F5C' }}>
                   {result}
                 </span>
-              </li>
+              </GlowCard>
             ))}
-          </ul>
+          </div>
         </div>
       </section>
 

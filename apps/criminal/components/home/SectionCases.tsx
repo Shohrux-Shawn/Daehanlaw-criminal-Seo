@@ -2,6 +2,7 @@ import React from 'react';
 import Link from 'next/link';
 import { ArrowRight } from 'lucide-react';
 import type { Case } from '@daehanlaw/graphql';
+import { GlowCard } from '@/components/ui/spotlight-card';
 
 interface SectionCasesProps {
   cases: Case[];
@@ -48,10 +49,10 @@ export default function SectionCases({ cases }: SectionCasesProps) {
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
           {display.map((c) => (
+            <GlowCard key={c._id} customSize glowColor="warm" className="bg-white shadow-[0_8px_30px_rgba(60,40,20,0.06)] hover:shadow-[0_16px_40px_rgba(60,40,20,0.12)] transition-shadow">
             <Link
-              key={c._id}
               href={`/cases/${c._id}`}
-              className="group flex flex-col p-7 rounded-2xl bg-white border border-[#e8dcc4]/60 shadow-[0_8px_30px_rgba(60,40,20,0.06)] hover:shadow-[0_16px_40px_rgba(60,40,20,0.12)] hover:-translate-y-1 transition-all duration-300 no-underline"
+              className="group flex flex-col p-7 no-underline h-full"
             >
               {c.caseStatus && (
                 <span className={`inline-flex self-start items-center px-3 py-1 rounded-full text-[11px] font-bold tracking-wide mb-4 ${resultChipStyles(c.caseStatus as string)}`}>
@@ -68,6 +69,7 @@ export default function SectionCases({ cases }: SectionCasesProps) {
                 자세히 보기 <ArrowRight className="w-3.5 h-3.5" />
               </div>
             </Link>
+            </GlowCard>
           ))}
         </div>
       </div>
